@@ -9,11 +9,15 @@
 <%
 	String path = request.getContextPath();
 %>
+<script type="text/javascript" src="<%=path %>/static/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<%=path %>/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=path %>/static/bootstrap/js/bootstrap-table.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=path %>/static/bootstrap/css/bootstrap.css"></link>
 </head>
 <body>
 	<form action="">
 		人员姓名：<input type="text" name="name"><br/>
-		性       别：<input type="radio" value="0" checked="checked">男</input> <input type="radio" value="1">女</input><br/>
+		性       别：<input type="radio" name="sex" value="0" checked="checked">男</input> <input type="radio" name="sex" value="1">女</input><br/>
 		年       龄：<input type="text" name="age"><br/>
 		密       码：<input type="text" name="password"><br/>
 		注册日期：<input type="text" name="registerTime"><br/>
@@ -25,8 +29,25 @@
 			</select><br/>
 		<button type="button" id="btn-save">保存</button>
 	</form>
-	
-	<script type="text/javascript" src="<%=path %>/static/jquery/jquery-1.10.2.min.js"></script>
+	<div></div>
+	<div>
+		<table class="table" id="user-table">
+			<thead class="thead">
+				<tr class="tr">
+					<td>人员姓名</td>
+					<td>性       别</td>
+					<td>年       龄</td>
+					<td>密       码</td>
+					<td>注册日期</td>
+					<td>备       注</td>
+					<td>状       态</td>
+					<td>操       作</td>
+				</tr>	
+			</thead>
+			<tbody class="tbody">
+			</tbody>
+		</table>
+	</div>
 	<script type="text/javascript">
 		$("#btn-save").on("click",function(){
 			$.ajax({
@@ -35,7 +56,10 @@
 					name : $("[name='name']").val(),
 					sex : $("[name='sex']:checked").val(),
 					age : $("[name='age']").val(),
-					registerTime : $("[name='registerTime']").val()
+					password : $("[name='password']").val(),
+					registerTime : $("[name='registerTime']").val(),
+					remarks : $("[name='remarks']").val(),
+					status : $("[name='status']").val()					
 				},
 				success:function(data){
 					if(data.result == "success"){
@@ -46,6 +70,84 @@
 				}
 			})
 		})
+		
+		
+		function init(){
+			$("#user-table").bootstrapTable({
+				columns:[{
+					field : "id",
+					sortable : true,
+					sorOrder : "asc",
+					title : "id",
+					align : "center",
+				},
+				{
+					field : "name",
+					sortable : true,
+					sorOrder : "asc",
+					title : "姓名",
+					align : "center",
+				},
+				{
+					field : "sex",
+					sortable : true,
+					sorOrder : "asc",
+					title : "性别",
+					align : "center",
+				},
+				{
+					field : "age",
+					sortable : true,
+					sorOrder : "asc",
+					title : "年龄",
+					align : "center",
+				},
+				{
+					field : "password",
+					sortable : true,
+					sorOrder : "asc",
+					title : "密码",
+					align : "center",
+				},
+				{
+					field : "register-time",
+					sortable : true,
+					sorOrder : "asc",
+					title : "注册日期",
+					align : "center",
+				},
+				{
+					field : "remarks",
+					sortable : true,
+					sorOrder : "asc",
+					title : "备注",
+					align : "center",
+				},
+				{
+					field : "status",
+					sortable : true,
+					sorOrder : "asc",
+					title : "状态",
+					align : "center",
+				}
+				]
+			})
+		}
+		
+		
+		function query(){
+			$.ajax({
+				url:"<%=path %>/user/query",
+				data:{
+					name:$("[name='name']").val()
+				},
+				succecc:function(data){
+					if(data.result=="success"){
+						
+					}
+				}
+			})
+		}
 	
 	</script>
 </body>
