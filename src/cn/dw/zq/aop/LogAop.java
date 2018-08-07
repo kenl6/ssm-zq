@@ -30,7 +30,7 @@ public class LogAop {
 	public void doBefore(JoinPoint joinPoint) {
 		Object[] args = joinPoint.getArgs();
 
-		System.out.println("===========方法调用之前的操作===========" + args[0].toString());
+		System.out.println("===========方法调用之前的操作===========");
 	}
 
 	@After("log()")

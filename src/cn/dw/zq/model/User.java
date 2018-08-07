@@ -7,6 +7,8 @@ package cn.dw.zq.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class User {
 
 	private Integer id;
@@ -17,6 +19,7 @@ public class User {
 
 	private Integer age;
 
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date registerTime;
 
 	private String password;
@@ -88,6 +91,11 @@ public class User {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", age=" + age + ", registerTime=" + registerTime
+				+ ", password=" + password + ", remarks=" + remarks + ", status=" + status + "]";
+	}
 	
 }
