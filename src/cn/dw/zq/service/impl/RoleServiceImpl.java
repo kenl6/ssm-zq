@@ -35,6 +35,7 @@ public class RoleServiceImpl implements RoleService {
 	@Transactional // 开启事务
 	public void add(Role role) {
 		roleMapper.add(role);
+		System.out.println(role.getId());
 		// int i = 1 / 0;
 		// roleMapper.add(role);
 	}

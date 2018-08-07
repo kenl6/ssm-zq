@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dw.zq.mapper.UserMapper">
     <!-- useGeneratedKeys="true" keyColumn="id"  插入后自动翻回ID值 -->
-	<insert id="add" parameterType="cn.dw.zq.model.User" useGeneratedKeys="true" keyColumn="id">
+	<insert id="add" parameterType="cn.dw.zq.model.User" useGeneratedKeys="true" keyProperty="id">
 		insert into User
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="name != null and name !='' ">
@@ -54,7 +54,7 @@
 	</insert>
 
 	<update id="update" parameterType="cn.dw.zq.model.User">
-		update role set
+		update user set
 		<trim suffixOverrides=",">
 			<if test="name != null and name != ''">
 				name = #{name},
@@ -82,7 +82,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="cn.dw.zq.model.User">
-		delete from role where id = #{id}
+		delete from user where id = #{id}
 	</delete>
 
 	<resultMap type="cn.dw.zq.model.User" id="resultMap">
@@ -92,7 +92,7 @@
 	<!-- 配合别名使用resultType 可以解决字段跟属性不一致的问题 -->
 	<select id="query" parameterType="cn.dw.zq.model.User"
 		resultType="cn.dw.zq.model.User" resultMap="resultMap">
-		select * from role
+		select * from user
 		<where>
 			<if test="name !=null and name !=''">
 				and name = #{name}
