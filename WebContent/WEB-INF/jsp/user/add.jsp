@@ -65,6 +65,7 @@
 				<option value="0">注销</option>
 				<option value="1" selected="selected">运行</option>
 				<option value="2">暂停</option>
+				</select>
 			</div>
 		</div>
 		<button type="button" id="btn-save" class="btn">保存</button>
@@ -92,7 +93,7 @@
 		</table>
 	</div>
 
-
+    <script type="text/javascript" src="<%=path %>/static/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 		$("#btn-save").on("click",function(){
 			$.ajax({
@@ -109,6 +110,8 @@
 				success:function(data){
 					if(data.result == "success"){
 						alert("保存成功");
+						$("[name='name']").val("");
+						query();
 					}else{
 						alert("保存失败")
 					}
@@ -118,11 +121,14 @@
 		
 		query();
 		
+		$("#btn-query").on("click",function(){
+			query();
+		});
+		
 		function query(){
 			$.ajax({
-				url:"<%=path%>
-		/user/query",
-						data : {
+				url:"<%=path%>/user/query",
+			    data : {
 							name : $("[name='name']").val()
 						},
 						success : function(data) {
@@ -171,6 +177,30 @@
 						}
 					})
 		}
+		
+		$("[name='registerTime']").on("click",function(){
+			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});
+		})
+		
+		$("#user-table").on("click",".btn-del",function(){
+			debugger;
+			var that = $(this).parents("tr");
+			$.ajax({
+				url:"<%=path%>/user/delete",
+				type:"post",
+				data:{
+					id:$(this).val()
+				},
+				success:function(data){
+					if(data.result =="success"){
+						that.remove();
+						alert("删除成功！");
+					}else{
+						alert("删除失败！");
+					}
+				}
+			})
+		})
 	</script>
 </body>
 </html>
