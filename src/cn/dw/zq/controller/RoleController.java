@@ -36,9 +36,6 @@ public class RoleController {
 	@ResponseBody // 指定返回数据
 	public String add(Role role) {
 		roleService.add(role);
-		// return "success";
-		// return "{\"result\":\"success\"}";
-		// List<Role> roles = roleService.query(role);
 		JSONObject json = new JSONObject();
 		json.put("result", role);
 		return json.toJSONString();
@@ -60,5 +57,23 @@ public class RoleController {
 		JSONObject json = new JSONObject();
 		json.put("result", role);
 		return json.toJSONString();
+	}
+
+	@RequestMapping("/query")
+	@ResponseBody
+	public String query(Role role) {
+		List<Role> roles = roleService.query(role);
+
+		JSONObject json = new JSONObject();
+		json.put("result", roles);
+		return json.toJSONString();
+
+		// JSONArray jsonArray = new JSONArray();
+		// for (Role ro : roles) {
+		// JSONObject json = new JSONObject();
+		// json.put(ro.getId().toString(), ro);
+		// jsonArray.add(json);
+		// }
+		// return jsonArray.toJSONString();
 	}
 }

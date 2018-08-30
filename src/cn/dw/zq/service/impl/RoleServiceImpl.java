@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.dw.zq.mapper.RoleMapper;
 import cn.dw.zq.model.Role;
@@ -31,8 +32,11 @@ public class RoleServiceImpl implements RoleService {
 	private RoleMapper roleMapper;
 
 	@Override
+	@Transactional // 开启事务
 	public void add(Role role) {
 		roleMapper.add(role);
+		// int i = 1 / 0;
+		// roleMapper.add(role);
 	}
 
 	@Override

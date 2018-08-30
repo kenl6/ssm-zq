@@ -31,7 +31,7 @@
 				name = #{name},
 			</if>
 			<if test="remarks !=null and remarks !=''">
-				remarks = #{name},
+				remarks = #{remarks},
 			</if>
 		</trim>
 		where id = #{id}

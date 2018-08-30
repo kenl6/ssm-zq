@@ -58,8 +58,18 @@
 		<property name="basePackage" value="cn.dw.zq.mapper"></property>
 	</bean>
 
-	<!-- AOP配置 开启自动代理-->
+	<!-- AOP配置 开启自动代理 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+	<!-- 配置事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 开启事务的注解驱动 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
 
 	<!-- 处理页面数据传递乱码问题 -->
 	<mvc:annotation-driven>
