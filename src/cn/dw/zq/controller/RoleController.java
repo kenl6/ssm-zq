@@ -36,12 +36,29 @@ public class RoleController {
 	@ResponseBody // 指定返回数据
 	public String add(Role role) {
 		roleService.add(role);
-//		return "success";
-//		return "{\"result\":\"success\"}";
-		List<Role> roles = roleService.query(role);
+		// return "success";
+		// return "{\"result\":\"success\"}";
+		// List<Role> roles = roleService.query(role);
 		JSONObject json = new JSONObject();
 		json.put("result", role);
 		return json.toJSONString();
 	}
 
+	@RequestMapping("/update")
+	@ResponseBody
+	public String update(Role role) {
+		roleService.update(role);
+		JSONObject json = new JSONObject();
+		json.put("result", role);
+		return json.toJSONString();
+	}
+
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String delete(Role role) {
+		roleService.delete(role);
+		JSONObject json = new JSONObject();
+		json.put("result", role);
+		return json.toJSONString();
+	}
 }

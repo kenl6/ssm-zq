@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.dw.zq.dao.RoleDao;
+import cn.dw.zq.mapper.RoleMapper;
 import cn.dw.zq.model.Role;
 import cn.dw.zq.service.RoleService;
 
@@ -17,35 +17,37 @@ import cn.dw.zq.service.RoleService;
 @Service
 public class RoleServiceImpl implements RoleService {
 
+	// @Autowired
+	// private RoleDao roleDao;
+	//
+	// public RoleDao getRoleDao() {
+	// return roleDao;
+	// }
+	//
+	// public void setRoleDao(RoleDao roleDao) {
+	// this.roleDao = roleDao;
+	// }
 	@Autowired
-	private RoleDao roleDao;
-
-	public RoleDao getRoleDao() {
-		return roleDao;
-	}
-
-	public void setRoleDao(RoleDao roleDao) {
-		this.roleDao = roleDao;
-	}
+	private RoleMapper roleMapper;
 
 	@Override
 	public void add(Role role) {
-		roleDao.add(role);
+		roleMapper.add(role);
 	}
 
 	@Override
 	public void update(Role role) {
-		roleDao.update(role);
+		roleMapper.update(role);
 	}
 
 	@Override
 	public void delete(Role role) {
-		roleDao.delete(role);
+		roleMapper.delete(role);
 	}
 
 	@Override
 	public List<Role> query(Role role) {
-		return roleDao.query(role);
+		return roleMapper.query(role);
 	}
 
 }

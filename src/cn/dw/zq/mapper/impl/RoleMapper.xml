@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-  <context id="context1">
-    <jdbcConnection connectionURL="???" driverClass="???" password="???" userId="???" />
-    <javaModelGenerator targetPackage="???" targetProject="???" />
-    <sqlMapGenerator targetPackage="???" targetProject="???" />
-    <javaClientGenerator targetPackage="???" targetProject="???" type="XMLMAPPER" />
-    <table schema="???" tableName="???">
-      <columnOverride column="???" property="???" />
-    </table>
-  </context>
-</generatorConfiguration>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dw.zq.mapper.RoleMapper">
+
+	<insert id="add" parameterType="cn.dw.zq.model.Role">
+		<!-- insert into role(name,remarks) values('张三','备注') -->
+		insert into role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name !='' ">
+				name,
+			</if>
+			<if test="remarks !=null and remarks !=''">
+				remarks,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name !='' ">
+				#{name},
+			</if>
+			<if test="remarks !=null and remarks !=''">
+				#{remarks},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="cn.dw.zq.model.Role">
+		update role set
+		<trim suffixOverrides=",">
+			<if test="name != null and name!=''">
+				name = #{name},
+			</if>
+			<if test="remarks !=null and remarks !=''">
+				remarks = #{name},
+			</if>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="cn.dw.zq.model.Role">
+		delete from role where id = #{id}
+	</delete>
+
+	<select id="query" parameterType="cn.dw.zq.model.Role"
+		resultType="cn.dw.zq.model.Role">
+		select * from role
+		<where>
+			<if test="name !=null and name !=''">
+				and name = #{name}
+			</if>
+			<if test="remarks !=null and remarks !=''">
+				and remarks = #{remarks}
+			</if>
+		</where>
+	</select>
+
+</mapper>
