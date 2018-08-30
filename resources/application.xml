@@ -35,6 +35,28 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<!-- url后配置多个参数需要把& 变成&amp; 比如 ？characterEncoding=utf8&amp;userSSL=true -->
+		<property name="url" value="jdbc:mysql://localhost:3306/zq-ssm"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+
+	<!-- mybatis sqlsessionfactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations" value="classpath:cn/dw/zq/mapper/impl/*.xml"></property>
+	</bean>
+
+	<!-- 整合spring mybatis 把接口跟XML里面的配置sql语句结合起来 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<property name="basePackage" value="cn.dw.zq.mapper"></property>
+	</bean>
+
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
 			<!-- 注册字符串转换器，把编码设置为utf-8 -->
