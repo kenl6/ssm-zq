@@ -84,6 +84,8 @@
 					</list>
 				</property>
 			</bean>
+			<!-- Jackson 将返回结果序列化为json -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 </beans>

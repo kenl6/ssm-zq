@@ -37,6 +37,7 @@ public class RoleController {
 	public String add(Role role) {
 		roleService.add(role);
 		JSONObject json = new JSONObject();
+		json.put("resultCode", "200");
 		json.put("result", role);
 		return json.toJSONString();
 	}
@@ -55,18 +56,18 @@ public class RoleController {
 	public String delete(Role role) {
 		roleService.delete(role);
 		JSONObject json = new JSONObject();
-		json.put("result", role);
+		json.put("result", "success");
 		return json.toJSONString();
 	}
 
 	@RequestMapping("/query")
 	@ResponseBody
-	public String query(Role role) {
+	public List<Role> query(Role role) {
 		List<Role> roles = roleService.query(role);
-
-		JSONObject json = new JSONObject();
-		json.put("result", roles);
-		return json.toJSONString();
+		return roles;
+//		JSONObject json = new JSONObject();
+//		json.put("result", roles);
+//		return json.toJSONString();
 
 		// JSONArray jsonArray = new JSONArray();
 		// for (Role ro : roles) {
