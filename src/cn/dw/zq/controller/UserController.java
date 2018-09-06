@@ -29,6 +29,11 @@ public class UserController {
 		return("user/add");
 	}
 	
+	@RequestMapping("/pic")
+	public String pic(){
+		return("user/pic");
+	}
+	
 	@RequestMapping("/add")
 	@ResponseBody
 	public String add(User user){

@@ -10,67 +10,71 @@
 <%
 	String path = request.getContextPath();
 %>
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/static/bootstrap/css/bootstrap.css"></link>
 <script type="text/javascript"
 	src="<%=path%>/static/jquery/jquery-1.10.2.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/static/bootstrap/css/bootstrap.min.css"></link>
+<script type="text/javascript"
+	src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div>
-	<form action="" class="form-horizontal">
-		<div class="form-group row">
-			<label for="inputName" class="col-sm-2 col-form-label">人员姓名</label>
-			<div class="col-sm-2">
-				<input type="text" name="name" class="form-control" id="inputName">
+	<div>
+		<form action="" class="form-horizontal">
+			<div class="form-group row">
+				<label for="inputName" class="col-sm-2 col-form-label">人员姓名</label>
+				<div class="col-sm-2">
+					<input type="text" name="name" class="form-control" id="inputName">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputSex" class="col-sm-2 col-form-label">性别</label>
-			<div class="form-check-inline">
-				<input class="form-check-input" type="radio" name="sex" value="0"
-					checked="checked"> <label class="form-check-label">
-					男 </label> <input class="form-check-input" type="radio" name="sex"
-					value="1"> <label class="form-check-label">
-					女 </label>
+			<div class="form-group row">
+				<label for="inputSex" class="col-sm-2 col-form-label">性别</label>
+				<div class="form-check-inline">
+					<input class="form-check-input" type="radio" name="sex" value="0"
+						checked="checked"> <label class="form-check-label">
+						男 </label> <input class="form-check-input" type="radio" name="sex"
+						value="1"> <label class="form-check-label"> 女 </label>
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputAge" class="col-sm-2 col-form-label">年龄</label>
-			<div class="col-sm-2">
-				<input type="text" name="age" class="form-control" id="inputAge">
+			<div class="form-group row">
+				<label for="inputAge" class="col-sm-2 col-form-label">年龄</label>
+				<div class="col-sm-2">
+					<input type="text" name="age" class="form-control" id="inputAge">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputPass" class="col-sm-2 col-form-label">密码</label>
-			<div class="col-sm-2">
-				<input type="text" name="password" class="form-control" id="inputPass">
+			<div class="form-group row">
+				<label for="inputPass" class="col-sm-2 col-form-label">密码</label>
+				<div class="col-sm-2">
+					<input type="text" name="password" class="form-control"
+						id="inputPass">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputDate" class="col-sm-2 col-form-label">注册时间</label>
-			<div class="col-sm-2">
-				<input type="text" name="registerTime" class="form-control" id="inputDate">
+			<div class="form-group row">
+				<label for="inputDate" class="col-sm-2 col-form-label">注册时间</label>
+				<div class="col-sm-2">
+					<input type="text" name="registerTime" class="form-control"
+						id="inputDate">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputRemarks" class="col-sm-2 col-form-label">备注</label>
-			<div class="col-sm-2">
-				<input type="text" name="remarks" class="form-control" id="inputRemarks">
+			<div class="form-group row">
+				<label for="inputRemarks" class="col-sm-2 col-form-label">备注</label>
+				<div class="col-sm-2">
+					<input type="text" name="remarks" class="form-control"
+						id="inputRemarks">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputStatus" class="col-sm-2 col-form-label">备注</label>
-			<div class="col-sm-2">
-				<select name="status" class="form-control" id="inputStatus">
-				<option value="0">注销</option>
-				<option value="1" selected="selected">运行</option>
-				<option value="2">暂停</option>
-				</select>
+			<div class="form-group row">
+				<label for="inputStatus" class="col-sm-2 col-form-label">备注</label>
+				<div class="col-sm-2">
+					<select name="status" class="form-control" id="inputStatus">
+						<option value="0">注销</option>
+						<option value="1" selected="selected">运行</option>
+						<option value="2">暂停</option>
+					</select>
+				</div>
 			</div>
-		</div>
-		<button type="button" id="btn-save" class="btn">保存</button>
-		<button type="button" id="btn-query" class="btn">查询</button>
-	</form>
+			<button type="button" id="btn-save" class="btn">保存</button>
+			<button type="button" id="btn-query" class="btn">查询</button>
+		</form>
 	</div>
 	<div>
 		<table class="table" id="user-table">
@@ -93,7 +97,10 @@
 		</table>
 	</div>
 
-    <script type="text/javascript" src="<%=path %>/static/My97DatePicker/WdatePicker.js"></script>
+	
+
+	<script type="text/javascript"
+		src="<%=path%>/static/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 		$("#btn-save").on("click",function(){
 			$.ajax({
@@ -187,20 +194,25 @@
 			var that = $(this).parents("tr");
 			$.ajax({
 				url:"<%=path%>/user/delete",
-				type:"post",
-				data:{
-					id:$(this).val()
+				type : "post",
+				data : {
+					id : $(this).val()
 				},
-				success:function(data){
-					if(data.result =="success"){
+				success : function(data) {
+					if (data.result == "success") {
 						that.remove();
 						alert("删除成功！");
-					}else{
+					} else {
 						alert("删除失败！");
 					}
 				}
 			})
 		})
+		
+
+
+
+
 	</script>
 </body>
 </html>
