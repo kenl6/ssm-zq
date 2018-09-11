@@ -21,3 +21,6 @@ CSS3 教程：http://www.w3school.com.cn/css3/index.asp
 原声AJAX ：https://www.cnblogs.com/greatluoluo/p/6295082.html
 
 jquery ajax:https://www.cnblogs.com/haha12/p/4727443.html
+
+
+mybatis mapper xml :https://blog.csdn.net/congyihao/article/details/69822643
