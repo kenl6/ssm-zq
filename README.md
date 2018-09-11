@@ -12,3 +12,6 @@ https://blog.csdn.net/zht741322694/article/details/78743220
 
 bootstrap 轮播：
 http://www.runoob.com/bootstrap/bootstrap-carousel-plugin.html
+
+
+SSM配置：https://blog.csdn.net/thewaiting/article/details/78739445
