@@ -15,3 +15,9 @@ http://www.runoob.com/bootstrap/bootstrap-carousel-plugin.html
 
 
 SSM配置：https://blog.csdn.net/thewaiting/article/details/78739445
+
+CSS3 教程：http://www.w3school.com.cn/css3/index.asp
+
+原声AJAX ：https://www.cnblogs.com/greatluoluo/p/6295082.html
+
+jquery ajax:https://www.cnblogs.com/haha12/p/4727443.html
